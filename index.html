@@ -47,22 +47,25 @@
     background:linear-gradient(90deg, transparent, var(--orange), var(--gold), var(--bordo), var(--gold), var(--orange), transparent);
     opacity:.85; z-index:2;
   }
-  /* затемняющая-осветляющая плёнка, чтобы текст читался поверх фото */
   section > *{position:relative; z-index:3;}
 
+  /* ФОН 1 — усилен: почти без плёнки, с лёгким тёплым оттенком */
   #idea{
     background-image:
-      linear-gradient(180deg, #fff3d6cc 0%, #ffe0a3aa 60%, #f6c177cc 100%),
+      linear-gradient(180deg, #fff3d655 0%, #ffe0a333 60%, #f6c17788 100%),
       url("fon.jpg");
+    background-position:center top, center top;
   }
+  /* ФОН 2 — ярче, плёнка слабее */
   #make{
     background-image:
-      linear-gradient(180deg, #fff3d6e6 0%, #ffe0a3cc 100%),
+      linear-gradient(180deg, #fff3d699 0%, #ffe0a377 100%),
       url("fon2.jpg");
   }
+  /* ФОН 3 — ярче, плёнка слабее */
   #team{
     background-image:
-      linear-gradient(180deg, #fff3d6e6 0%, #ffe0a3cc 100%),
+      linear-gradient(180deg, #fff3d699 0%, #ffe0a377 100%),
       url("fon3.jpg");
   }
 
@@ -222,7 +225,7 @@
     <div class="card with-photo"><img class="photo" src="lena.jpg" alt="Елена"><h3>Елена</h3><p>Умопомрачительная. Смарт + комп.</p></div>
     <div class="card with-photo"><img class="photo" src="ulyana.jpg" alt="Ульяна"><h3>Ульяна</h3><p>Правильная. Доктор-оториноларинголог. Мама ЛИРЫ и Сколопендры. Смарт, возможно комп.</p></div>
     <div class="card with-photo"><img class="photo" src="kostya.jpg" alt="Константин"><h3>Константин</h3><p>Фантазёр и умелец. Жена Вика — учитель английского. Сын Альберт (ПЭ). Смарт + комп.</p></div>
-    <div class="card with-photo"><img class="photo" src="peresvet.jpg" alt="Пересвет"><h3>Пересвет</h3><p>Организатор встречи. Смарт + комп.</p></div>
+    <div class="card with-photo"><img class="photo" src="peresvet.jpg" alt="Пересвет"><h3>Пересвет</h3><p>Организатор встречи. Математик, поэт, уличный акробат. Смарт + комп.</p></div>
     <div class="card with-photo"><img class="photo" src="polyana.jpg" alt="Поляна"><h3>Поляна</h3><p>Фантастически талантлива: поёт, танцует, дизайнер. Смарт + комп.</p></div>
   </div>
 </section>
