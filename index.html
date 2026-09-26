@@ -35,28 +35,26 @@
   }
   nav a:hover{color:#fff; background:var(--bordo);}
 
-  /* ВСЕ секции — фон на всю ширину и высоту, без полей */
   section{
-    width:100vw;
-    margin:0;
-    min-height:100vh;
-    padding:120px 7vw 80px;
+    width:100%;
+    min-height:100vh; padding:120px 7vw 80px;
     display:flex; flex-direction:column; justify-content:center;
     border-bottom:2px dashed var(--line);
     position:relative; z-index:1;
     overflow:hidden;
-    background-size:cover !important;
+    background-size:100% 100% !important;
     background-position:center !important;
     background-repeat:no-repeat !important;
   }
   section .bg-layer{
     position:absolute; inset:0; z-index:0; pointer-events:none;
-    background-size:cover;
+    background-size:100% 100%;
     background-position:center;
     background-repeat:no-repeat;
   }
   section .bg-tint{
     position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
   }
   section > *:not(.bg-layer):not(.bg-tint){position:relative; z-index:3;}
   section::before{
@@ -65,21 +63,19 @@
     opacity:.85; z-index:4;
   }
 
-  /* БЛОК 1 — облака, растянуты полностью, лёгкая тёплая плёнка */
+  /* БЛОК 1 — облака */
   #idea{
     background-image:
       linear-gradient(180deg, #fff3d633 0%, #ffe0a322 100%),
       url("fon.jpg");
-    background-size:100% 100%, 100% 100% !important;
   }
   #idea .bg-tint{display:none;}
 
-  /* БЛОК 2 — fon2, растянут полностью */
+  /* БЛОК 2 — fon2 */
   #make{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon2.jpg");
-    background-size:100% 100%, 100% 100% !important;
   }
   #make .bg-tint{display:none;}
 
@@ -88,51 +84,48 @@
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon3.jpg");
-    background-size:100% 100%, 100% 100% !important;
   }
   #team .bg-tint{display:none;}
 
-  /* БЛОК 4 — fon2, перевёрнут 180° */
-  #steps .bg-layer{
-    background-image:url("fon2.jpg");
-    transform:rotate(180deg);
+  /* БЛОК 4 — fon2 перевёрнут */
+  #steps{
+    background-image:
+      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
+      url("fon2.jpg");
   }
-  #steps .bg-tint{
-    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
+  #steps .bg-tint{display:none;}
+
+  /* БЛОК 5 — fon3, растянут по всей ширине */
+  #pain{
+    background-image:
+      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
+      url("fon3.jpg");
   }
-  /* БЛОК 5 — fon3, поворот 90° */
-  #pain .bg-layer{
-    background-image:url("fon3.jpg");
-    transform:rotate(90deg) scale(1.8);
+  #pain .bg-tint{display:none;}
+
+  /* БЛОК 6 — fon2, растянут по всей ширине */
+  #flow{
+    background-image:
+      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
+      url("fon2.jpg");
   }
-  #pain .bg-tint{
-    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
+  #flow .bg-tint{display:none;}
+
+  /* БЛОК 7 — fon3 */
+  #after{
+    background-image:
+      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
+      url("fon3.jpg");
   }
-  /* БЛОК 6 — fon2, поворот 270° */
-  #flow .bg-layer{
-    background-image:url("fon2.jpg");
-    transform:rotate(270deg) scale(1.8);
+  #after .bg-tint{display:none;}
+
+  /* БЛОК 8 — финальный, fon3 */
+  #date{
+    background-image:
+      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
+      url("fon3.jpg");
   }
-  #flow .bg-tint{
-    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
-  }
-  /* БЛОК 7 — fon3, отражён по горизонтали */
-  #after .bg-layer{
-    background-image:url("fon3.jpg");
-    transform:scaleX(-1);
-  }
-  #after .bg-tint{
-    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
-  }
-  /* БЛОК 8 — финальный, fon3 повёрнут 180° — в единой гамме */
-  #date .bg-layer{
-    background-image:url("fon3.jpg");
-    transform:rotate(180deg);
-    opacity:1;
-  }
-  #date .bg-tint{
-    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
-  }
+  #date .bg-tint{display:none;}
 
   h1{
     font-size:clamp(32px,5.2vw,68px); line-height:1.15; margin-bottom:22px;
@@ -296,8 +289,6 @@
 </section>
 
 <section id="steps">
-  <div class="bg-layer"></div>
-  <div class="bg-tint"></div>
   <h2>Что нужно сделать каждому</h2>
   <ul>
     <li><span class="accent">1.</span> Зарегистрироваться в <b>Яндекс Телемосте</b> —
@@ -310,8 +301,6 @@
 </section>
 
 <section id="pain">
-  <div class="bg-layer"></div>
-  <div class="bg-tint"></div>
   <h2>Примеры «болей»</h2>
   <ul>
     <li>«Хочу сайт для своего дела, но не знаю с чего начать».</li>
@@ -324,8 +313,6 @@
 </section>
 
 <section id="flow">
-  <div class="bg-layer"></div>
-  <div class="bg-tint"></div>
   <h2>Как будет устроена встреча</h2>
   <ul>
     <li><b>0:00–0:20</b> — входим, проверяем связь, знакомимся с форматом.</li>
@@ -337,8 +324,6 @@
 </section>
 
 <section id="after">
-  <div class="bg-layer"></div>
-  <div class="bg-tint"></div>
   <h2>Что останется после</h2>
   <ul>
     <li>Готовый <span class="accent">артефакт</span>: сайт, презентация или план.</li>
@@ -349,8 +334,6 @@
 </section>
 
 <section id="date" class="center">
-  <div class="bg-layer"></div>
-  <div class="bg-tint"></div>
   <div class="big">27.09.26</div>
   <h2>Жду вас в телемосте</h2>
   <p class="muted">Кто войдёт — тот и участник. Время согласует Пересвет.</p>
