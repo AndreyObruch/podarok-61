@@ -12,7 +12,7 @@
     --gold:#c8860a; --bordo:#8b1e3f; --orange:#d2691e;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{width:100%; overflow-x:hidden;}
+  html,body{width:100%; max-width:100%; overflow-x:hidden;}
   html{scroll-behavior:smooth;}
   body{
     font-family:"Georgia","Times New Roman",serif;
@@ -35,27 +35,28 @@
   }
   nav a:hover{color:#fff; background:var(--bordo);}
 
+  /* ВСЕ секции — фон на всю ширину и высоту, без полей */
   section{
-    width:100%;
-    min-height:100vh; padding:120px 7vw 80px;
+    width:100vw;
+    margin:0;
+    min-height:100vh;
+    padding:120px 7vw 80px;
     display:flex; flex-direction:column; justify-content:center;
     border-bottom:2px dashed var(--line);
     position:relative; z-index:1;
     overflow:hidden;
-    background-size:100% 100% !important;
+    background-size:cover !important;
     background-position:center !important;
     background-repeat:no-repeat !important;
   }
-  /* Слой фона — растянут на всю секцию */
   section .bg-layer{
     position:absolute; inset:0; z-index:0; pointer-events:none;
-    background-size:100% 100%;
+    background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
   }
   section .bg-tint{
     position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(180deg, #fff3d666 0%, #ffe0a344 100%);
   }
   section > *:not(.bg-layer):not(.bg-tint){position:relative; z-index:3;}
   section::before{
@@ -64,27 +65,30 @@
     opacity:.85; z-index:4;
   }
 
-  /* БЛОК 1 — облака, растянуты, лёгкая плёнка */
+  /* БЛОК 1 — облака, растянуты полностью, лёгкая тёплая плёнка */
   #idea{
     background-image:
-      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 60%, #f6c17755 100%),
+      linear-gradient(180deg, #fff3d633 0%, #ffe0a322 100%),
       url("fon.jpg");
+    background-size:100% 100%, 100% 100% !important;
   }
   #idea .bg-tint{display:none;}
 
-  /* БЛОК 2 — fon2 */
+  /* БЛОК 2 — fon2, растянут полностью */
   #make{
     background-image:
-      linear-gradient(180deg, #fff3d655 0%, #ffe0a333 100%),
+      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon2.jpg");
+    background-size:100% 100%, 100% 100% !important;
   }
   #make .bg-tint{display:none;}
 
   /* БЛОК 3 — fon3 */
   #team{
     background-image:
-      linear-gradient(180deg, #fff3d655 0%, #ffe0a333 100%),
+      linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon3.jpg");
+    background-size:100% 100%, 100% 100% !important;
   }
   #team .bg-tint{display:none;}
 
@@ -94,7 +98,7 @@
     transform:rotate(180deg);
   }
   #steps .bg-tint{
-    background:linear-gradient(180deg, #fff3d655 0%, #ffe0a333 100%);
+    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
   }
   /* БЛОК 5 — fon3, поворот 90° */
   #pain .bg-layer{
@@ -102,7 +106,7 @@
     transform:rotate(90deg) scale(1.8);
   }
   #pain .bg-tint{
-    background:linear-gradient(180deg, #fff3d655 0%, #ffe0a333 100%);
+    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
   }
   /* БЛОК 6 — fon2, поворот 270° */
   #flow .bg-layer{
@@ -110,7 +114,7 @@
     transform:rotate(270deg) scale(1.8);
   }
   #flow .bg-tint{
-    background:linear-gradient(180deg, #fff3d655 0%, #ffe0a333 100%);
+    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
   }
   /* БЛОК 7 — fon3, отражён по горизонтали */
   #after .bg-layer{
@@ -118,16 +122,16 @@
     transform:scaleX(-1);
   }
   #after .bg-tint{
-    background:linear-gradient(180deg, #fff3d655 0%, #ffe0a333 100%);
+    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
   }
-  /* БЛОК 8 — финальный, лёгкий fon2 */
+  /* БЛОК 8 — финальный, fon3 повёрнут 180° — в единой гамме */
   #date .bg-layer{
-    background-image:url("fon2.jpg");
+    background-image:url("fon3.jpg");
     transform:rotate(180deg);
-    opacity:.75;
+    opacity:1;
   }
   #date .bg-tint{
-    background:linear-gradient(180deg, #fff3d688 0%, #ffe0a355 100%);
+    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
   }
 
   h1{
