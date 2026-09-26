@@ -125,7 +125,22 @@
     font-weight:700;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   }
-  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; margin-top:24px;}
+
+  /* СЕТКА ЛЮДЕЙ */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:22px; margin-top:24px;
+    max-width:1400px; margin-left:auto; margin-right:auto;
+  }
+  /* Лена — одна сверху, по центру */
+  .card.lead{
+    grid-column:1 / -1;
+    justify-self:center;
+    max-width:420px;
+    width:100%;
+  }
+  /* Остальные — 4 в ряд */
   .card{
     background:var(--card);
     border:2px solid var(--line);
@@ -152,7 +167,6 @@
   }
   .card p{font-size:clamp(14px,1.4vw,17px); color:var(--muted);}
 
-  /* ФОТО ЦЕЛИКОМ, БЕЗ ОБРЕЗКИ */
   .card.with-photo{padding-top:0;}
   .card .photo{
     width:calc(100% + 48px);
@@ -201,9 +215,14 @@
     transition:transform .2s;
   }
   #up:hover{transform:scale(1.08) rotate(6deg);}
+
+  @media(max-width:1100px){
+    .cards{grid-template-columns:repeat(2, minmax(0, 1fr));}
+  }
   @media(max-width:600px){
     nav{padding:10px 12px;} nav a{font-size:12px; padding:5px 9px;}
     section{padding:100px 6vw 60px;}
+    .cards{grid-template-columns:1fr;}
     .hero-photo{width:220px; height:220px;}
   }
 </style>
@@ -250,7 +269,7 @@
   <h2>Кто в деле</h2>
   <p class="muted">Кто откликнется и войдёт — тот и участник. Время согласует Пересвет.</p>
   <div class="cards">
-    <div class="card with-photo"><img class="photo" src="lena.jpg" alt="Елена"><h3>Елена</h3><p>Умопомрачительная. Смарт + комп.</p></div>
+    <div class="card with-photo lead"><img class="photo" src="lena.jpg" alt="Елена"><h3>Елена</h3><p>Умопомрачительная. Смарт + комп.</p></div>
     <div class="card with-photo"><img class="photo" src="ulyana.jpg" alt="Ульяна"><h3>Ульяна</h3><p>Правильная. Доктор-оториноларинголог. Мама ЛИРЫ и Сколопендры. Смарт, возможно комп.</p></div>
     <div class="card with-photo"><img class="photo" src="kostya.jpg" alt="Константин"><h3>Константин</h3><p>Фантазёр и умелец. Жена Вика — учитель английского. Сын Альберт (ПЭ). Смарт + комп.</p></div>
     <div class="card with-photo"><img class="photo" src="peresvet.jpg" alt="Пересвет"><h3>Пересвет</h3><p>Организатор встречи. Математик, поэт, уличный акробат. Смарт + комп.</p></div>
