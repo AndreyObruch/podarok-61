@@ -46,86 +46,52 @@
     background-position:center !important;
     background-repeat:no-repeat !important;
   }
-  section .bg-layer{
-    position:absolute; inset:0; z-index:0; pointer-events:none;
-    background-size:100% 100%;
-    background-position:center;
-    background-repeat:no-repeat;
-  }
-  section .bg-tint{
-    position:absolute; inset:0; z-index:1; pointer-events:none;
-    background:linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%);
-  }
-  section > *:not(.bg-layer):not(.bg-tint){position:relative; z-index:3;}
   section::before{
     content:""; position:absolute; top:0; left:0; right:0; height:4px;
     background:linear-gradient(90deg, transparent, var(--orange), var(--gold), var(--bordo), var(--gold), var(--orange), transparent);
     opacity:.85; z-index:4;
   }
 
-  /* БЛОК 1 — облака */
   #idea{
     background-image:
       linear-gradient(180deg, #fff3d633 0%, #ffe0a322 100%),
       url("fon.jpg");
   }
-  #idea .bg-tint{display:none;}
-
-  /* БЛОК 2 — fon2 */
   #make{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon2.jpg");
   }
-  #make .bg-tint{display:none;}
-
-  /* БЛОК 3 — fon3 */
   #team{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon3.jpg");
   }
-  #team .bg-tint{display:none;}
-
-  /* БЛОК 4 — fon2 перевёрнут */
   #steps{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon2.jpg");
   }
-  #steps .bg-tint{display:none;}
-
-  /* БЛОК 5 — fon3, растянут по всей ширине */
   #pain{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon3.jpg");
   }
-  #pain .bg-tint{display:none;}
-
-  /* БЛОК 6 — fon2, растянут по всей ширине */
   #flow{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon2.jpg");
   }
-  #flow .bg-tint{display:none;}
-
-  /* БЛОК 7 — fon3 */
   #after{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon3.jpg");
   }
-  #after .bg-tint{display:none;}
-
-  /* БЛОК 8 — финальный, fon3 */
   #date{
     background-image:
       linear-gradient(180deg, #fff3d644 0%, #ffe0a322 100%),
       url("fon3.jpg");
   }
-  #date .bg-tint{display:none;}
 
   h1{
     font-size:clamp(32px,5.2vw,68px); line-height:1.15; margin-bottom:22px;
@@ -168,6 +134,7 @@
     box-shadow:0 8px 24px #c8860a22;
     transition:transform .25s, box-shadow .25s, border-color .25s;
     position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
   }
   .card::before{
     content:""; position:absolute; top:0; left:24px; right:24px; height:4px;
@@ -185,12 +152,15 @@
   }
   .card p{font-size:clamp(14px,1.4vw,17px); color:var(--muted);}
 
-  .card.with-photo{ padding-top:0; }
+  /* ФОТО ЦЕЛИКОМ, БЕЗ ОБРЕЗКИ */
+  .card.with-photo{padding-top:0;}
   .card .photo{
     width:calc(100% + 48px);
     margin:-22px -24px 16px -24px;
-    aspect-ratio:1 / 1;
-    object-fit:cover;
+    height:auto;
+    max-height:340px;
+    object-fit:contain;
+    background:#fff8e6;
     display:block;
     border-bottom:3px solid var(--gold);
   }
