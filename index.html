@@ -6,16 +6,10 @@
 <title>Ваш лучший подарок — общение!</title>
 <style>
   :root{
-    --bg1:#fff3d6;           /* светлый мед */
-    --bg2:#ffe0a3;           /* янтарь */
-    --bg3:#f6c177;           /* осенний закат */
-    --card:#fffaf0;
-    --line:#e0b878;
-    --text:#4a2c12;
-    --muted:#8a5a2b;
-    --gold:#c8860a;
-    --bordo:#8b1e3f;
-    --orange:#d2691e;
+    --bg1:#fff3d6; --bg2:#ffe0a3; --bg3:#f6c177;
+    --card:#fffaf0; --line:#e0b878;
+    --text:#4a2c12; --muted:#8a5a2b;
+    --gold:#c8860a; --bordo:#8b1e3f; --orange:#d2691e;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -24,15 +18,6 @@
     background:linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
     background-attachment:fixed;
     color:var(--text); line-height:1.65;
-  }
-  /* декоративные осенние листья */
-  body::before{
-    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
-    background-image:
-      radial-gradient(circle at 8% 12%, #d2691e22 0 60px, transparent 61px),
-      radial-gradient(circle at 92% 20%, #8b1e3f22 0 70px, transparent 71px),
-      radial-gradient(circle at 15% 85%, #c8860a22 0 80px, transparent 81px),
-      radial-gradient(circle at 85% 90%, #d2691e22 0 55px, transparent 56px);
   }
   nav{
     position:fixed; top:0; left:0; right:0; z-index:100;
@@ -49,12 +34,38 @@
     font-weight:600;
   }
   nav a:hover{color:#fff; background:var(--bordo);}
+
   section{
     min-height:100vh; padding:120px 7vw 80px;
     display:flex; flex-direction:column; justify-content:center;
     border-bottom:2px dashed var(--line);
     position:relative; z-index:1;
+    background-size:cover; background-position:center; background-repeat:no-repeat;
   }
+  section::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:4px;
+    background:linear-gradient(90deg, transparent, var(--orange), var(--gold), var(--bordo), var(--gold), var(--orange), transparent);
+    opacity:.85; z-index:2;
+  }
+  /* затемняющая-осветляющая плёнка, чтобы текст читался поверх фото */
+  section > *{position:relative; z-index:3;}
+
+  #idea{
+    background-image:
+      linear-gradient(180deg, #fff3d6cc 0%, #ffe0a3aa 60%, #f6c177cc 100%),
+      url("fon.jpg");
+  }
+  #make{
+    background-image:
+      linear-gradient(180deg, #fff3d6e6 0%, #ffe0a3cc 100%),
+      url("fon2.jpg");
+  }
+  #team{
+    background-image:
+      linear-gradient(180deg, #fff3d6e6 0%, #ffe0a3cc 100%),
+      url("fon3.jpg");
+  }
+
   h1{
     font-size:clamp(32px,5.2vw,68px); line-height:1.15; margin-bottom:22px;
     color:var(--bordo); font-weight:800;
@@ -95,7 +106,7 @@
     padding:22px 24px;
     box-shadow:0 8px 24px #c8860a22;
     transition:transform .25s, box-shadow .25s, border-color .25s;
-    position:relative;
+    position:relative; overflow:hidden;
   }
   .card::before{
     content:""; position:absolute; top:0; left:24px; right:24px; height:4px;
@@ -112,6 +123,29 @@
     color:var(--bordo); font-family:Georgia,serif; font-weight:800;
   }
   .card p{font-size:clamp(14px,1.4vw,17px); color:var(--muted);}
+
+  .card.with-photo{ padding-top:0; }
+  .card .photo{
+    width:calc(100% + 48px);
+    margin:-22px -24px 16px -24px;
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    display:block;
+    border-bottom:3px solid var(--gold);
+  }
+
+  .hero{
+    display:flex; gap:40px; align-items:center; flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .hero-text{flex:1 1 420px; min-width:280px;}
+  .hero-photo{
+    flex:0 0 280px; width:280px; height:280px; border-radius:50%;
+    object-fit:cover;
+    border:6px solid #fff;
+    box-shadow:0 12px 36px #8b1e3f55, 0 0 0 6px var(--gold);
+  }
+
   .big{
     font-size:clamp(56px,10vw,140px); color:var(--bordo);
     font-weight:800; line-height:1; letter-spacing:-2px;
@@ -125,7 +159,6 @@
     border-top:2px solid var(--gold);
     background:#fff3d6aa;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    position:relative; z-index:1;
   }
   #up{
     position:fixed; right:20px; bottom:20px; z-index:99;
@@ -137,14 +170,10 @@
     transition:transform .2s;
   }
   #up:hover{transform:scale(1.08) rotate(6deg);}
-  section::before{
-    content:""; position:absolute; top:0; left:0; right:0; height:4px;
-    background:linear-gradient(90deg, transparent, var(--orange), var(--gold), var(--bordo), var(--gold), var(--orange), transparent);
-    opacity:.85;
-  }
   @media(max-width:600px){
     nav{padding:10px 12px;} nav a{font-size:12px; padding:5px 9px;}
     section{padding:100px 6vw 60px;}
+    .hero-photo{width:220px; height:220px;}
   }
 </style>
 </head>
@@ -168,7 +197,12 @@
     <span class="badge">🎂 30.09.2026 · 61 год</span>
   </div>
   <h1>🎁 Ваш лучший подарок — общение!</h1>
-  <p class="muted">2–4 часа, где мы вместе что-то создаём и разговариваем по-настоящему.</p>
+  <div class="hero">
+    <div class="hero-text">
+      <p class="muted">2–4 часа, где мы вместе что-то создаём и разговариваем по-настоящему.</p>
+    </div>
+    <img class="hero-photo" src="papa.jpg" alt="Именинник">
+  </div>
 </section>
 
 <section id="make">
@@ -185,11 +219,11 @@
   <h2>Кто в деле</h2>
   <p class="muted">Кто откликнется и войдёт — тот и участник. Время согласует Пересвет.</p>
   <div class="cards">
-    <div class="card"><h3>Елена</h3><p>Умопомрачительная. Смарт + комп.</p></div>
-    <div class="card"><h3>Ульяна</h3><p>Правильная. Доктор-оториноларинголог. Мама ЛИРЫ и Сколопендры. Смарт, возможно комп.</p></div>
-    <div class="card"><h3>Константин</h3><p>Фантазёр и умелец. Жена Вика — учитель английского. Сын Альберт (ПЭ). Смарт + комп.</p></div>
-    <div class="card"><h3>Пересвет</h3><p>Организатор встречи. Смарт + комп.</p></div>
-    <div class="card"><h3>Поляна</h3><p>Фантастически талантлива: поёт, танцует, дизайнер. Смарт + комп.</p></div>
+    <div class="card with-photo"><img class="photo" src="lena.jpg" alt="Елена"><h3>Елена</h3><p>Умопомрачительная. Смарт + комп.</p></div>
+    <div class="card with-photo"><img class="photo" src="ulyana.jpg" alt="Ульяна"><h3>Ульяна</h3><p>Правильная. Доктор-оториноларинголог. Мама ЛИРЫ и Сколопендры. Смарт, возможно комп.</p></div>
+    <div class="card with-photo"><img class="photo" src="kostya.jpg" alt="Константин"><h3>Константин</h3><p>Фантазёр и умелец. Жена Вика — учитель английского. Сын Альберт (ПЭ). Смарт + комп.</p></div>
+    <div class="card with-photo"><img class="photo" src="peresvet.jpg" alt="Пересвет"><h3>Пересвет</h3><p>Организатор встречи. Смарт + комп.</p></div>
+    <div class="card with-photo"><img class="photo" src="polyana.jpg" alt="Поляна"><h3>Поляна</h3><p>Фантастически талантлива: поёт, танцует, дизайнер. Смарт + комп.</p></div>
   </div>
 </section>
 
